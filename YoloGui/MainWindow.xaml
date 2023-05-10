@@ -1,0 +1,109 @@
+﻿<Window x:Class="YoloGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:YoloGui.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1550" Background="#e0e2e2" WindowStyle="SingleBorderWindow" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1050"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="#f4f5f5">
+            <Border  Height="30"/>
+            <TextBlock Height="80" Width="1024" Text="This is a Titke -- Yolo V5" TextAlignment="Center" VerticalAlignment="Center" 
+                       FontFamily="Times New Roman" FontStyle="Italic" FontSize="54"/>
+            <Border Height="30" Background="#e0e2e2"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock Height="34" Width="1024"
+                       Text="    Image" FontSize="24" FontFamily="Times New Roman" FontWeight="Black" FontStyle="Italic" Background="#f4f5f5"/>
+            <Border Height="576" Width="1024" BorderBrush="#434343" BorderThickness="1"  Background="#f4f5f5">
+                <Image x:Name="InferenceImage">
+                </Image>
+            </Border>
+            <Border  Background="#f4f5f5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Border Height="60"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox x:Name="EnginePathTextBox" Height="30" Width="350" BorderBrush="#000000" 
+                         Text="{Binding EnginePath}" FontFamily="Times New Roman" FontSize="20" VerticalContentAlignment="Center"/>
+                <Border Width="20"/>
+                <Button x:Name="EngineParhButton" Width="80" Content="Load" Command="{Binding LoadEigenCommand}"
+                        FontFamily="Times New Roman" FontSize="20"/>
+            </StackPanel>
+
+            <Border Height="10"></Border>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox x:Name="LabelsPathTextBox" Height="30" Width="350" BorderBrush="#000000" 
+                         Text="{Binding LabelsPath}" FontFamily="Times New Roman" FontSize="20" VerticalContentAlignment="Center"/>
+                <Border Width="20"/>
+                <Button x:Name="LabelsPathButton" Width="80" Content="Load" Command="{Binding LoadLabelsCommand}"
+                        FontFamily="Times New Roman" FontSize="20"/>
+            </StackPanel>
+
+            <Border Height="10"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox x:Name="InputPathTextBox" Height="30" Width="350" BorderBrush="#000000"
+                         Text="{Binding InputPath}" FontFamily="Times New Roman" FontSize="20" VerticalContentAlignment="Center"/>
+                <Border Width="20"/>
+                <Button x:Name="InputPathButton" Width="80" Content="Load" Command="{Binding LoadInputCommand}"
+                        FontFamily="Times New Roman" FontSize="20"/>
+            </StackPanel>
+
+            <Border Height="30"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox x:Name="ModeComboBox" Width="120" Height="30" SelectedValue="{Binding InputType}"
+                          FontFamily="Times New Roman" FontSize="20">
+                    <ComboBoxItem Content="Camera"/>
+                    <ComboBoxItem Content="Video"/>
+                    <ComboBoxItem Content="Image"/>
+                </ComboBox>
+                <Border Width="100"/>
+                <StackPanel>
+                    <Button x:Name="InferenceButton" Height="30" Width="120" Content="Start" 
+                        BorderBrush="#00b030" BorderThickness="3" Background="#00e000" 
+                        IsEnabled="{Binding ModelNotRunning}" Command="{Binding StartInferenceCommand}"
+                        FontFamily="Times New Roman" FontSize="20"/>
+                    <Border Height="30"/>
+                    <Button x:Name="StopInferenceButton" Height="30" Width="120" Content="Stop" 
+                        BorderBrush="#c05000" BorderThickness="3" Background="#ff3000" 
+                        Command="{Binding StopInferenceCommand}"
+                        FontFamily="Times New Roman" FontSize="20"/>
+                </StackPanel>
+                <Border Width="50"/>
+
+            </StackPanel>
+
+            <Border Height="80"/>
+
+            <Border Width="400" BorderBrush="#434343" BorderThickness="1" >
+                <StackPanel>
+                    <Border Height="20"/>
+                    <TextBlock Text="  Objectness Threshold: 0.45" FontFamily="Times New Roman" FontSize="24" HorizontalAlignment="Center"/>
+                    <Border Height="20"/>
+                    <TextBlock Text="  Confidence Threshold: 0.25" FontFamily="Times New Roman" FontSize="24" HorizontalAlignment="Center"/>
+                    <Border Height="20"/>
+                    <TextBlock Text="IOU Threshold: 0.5" FontFamily="Times New Roman" FontSize="24" HorizontalAlignment="Center"/>
+                    <Border Height="20"/>
+                </StackPanel>
+            </Border>
+
+
+        </StackPanel>
+    </Grid>
+</Window>

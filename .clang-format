@@ -1,0 +1,26 @@
+Language: Cpp
+BasedOnStyle: Microsoft
+
+# TabWidth: '4'
+# IndentWidth: '4'
+# NamespaceIndentation: All
+# AccessModifierOffset: '-4'
+# #ColumnLimit: '140'
+
+AccessModifierOffset: '-4'
+AlignAfterOpenBracket: DontAlign
+AlignConsecutiveAssignments: true 
+AlignConsecutiveDeclarations: true
+AlignTrailingComments: true
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AlwaysBreakTemplateDeclarations: true
+BreakBeforeBraces: Allman
+FixNamespaceComments: true
+IndentWidth: '4'
+NamespaceIndentation: All
+PointerAlignment: Left
+SortIncludes: false
+TabWidth: '4'
+UseTab: Always
+
